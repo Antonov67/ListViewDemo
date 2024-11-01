@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     EditText editText;
     Button button;
     ListView listView;
-    ArrayAdapter adapter;
+    MyAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,24 +34,32 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
         listView = findViewById(R.id.list);
 
-        List<String> list = new ArrayList<>();
-        list.add("Java");
-        list.add("Python");
-        list.add("C#");
+        List<Lang> list = new ArrayList<>();
+        Lang lang = new Lang();
+        lang.name = "Java";
+        lang.age = 30;
+        lang.image = R.drawable.java;
+        list.add(lang);
+        lang = new Lang();
+        lang.name = "Python";
+        lang.age = 29;
+        lang.image = R.drawable.python;
+        list.add(lang);
 
-        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, list);
+
+        adapter = new MyAdapter(this, list);
         listView.setAdapter(adapter);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String str = editText.getText().toString();
-                if (!str.isEmpty()){
-                    list.add(str);
-                    adapter.notifyDataSetChanged();
-                }
-            }
-        });
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String str = editText.getText().toString();
+//                if (!str.isEmpty()){
+//                    list.add(str);
+//                    adapter.notifyDataSetChanged();
+//                }
+//            }
+//        });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
