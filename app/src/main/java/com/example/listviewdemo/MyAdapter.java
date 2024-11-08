@@ -33,7 +33,7 @@ public class MyAdapter extends ArrayAdapter<Lang> {
 
         name.setText(lang.name);
         age.setText(lang.age + "");
-        imageView.setImageResource(lang.image);
+        imageView.setImageURI(lang.uri);
 
         return convertView;
     }
